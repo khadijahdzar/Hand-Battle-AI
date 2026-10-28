@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    color-scheme: light;
+    font-family: 'Poppins', sans-serif;
+    background: #eaf3ff;
+    color: #123b70;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    background:
+        radial-gradient(ellipse at 12% 14%, rgba(76, 149, 255, 0.2), transparent 36%),
+        radial-gradient(ellipse at 88% 84%, rgba(30, 93, 190, 0.14), transparent 38%),
+        #eaf3ff;
+    color: #123b70;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    font: inherit;
+}
+
+#windowWrapper {
+    width: min(100%, 1000px);
+    padding: 24px;
+}
+
+#containerWindow {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 93, 190, 0.18);
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(26, 77, 143, 0.2);
+}
+
+#chromeBar {
+    display: flex;
+    height: 62px;
+    align-items: center;
+    gap: 9px;
+    padding: 0 24px;
+    border-bottom: 1px solid #d9e8fa;
+    background: #fff;
+}
+
+#chromeBar .circle {
+    width: 11px;
+    height: 11px;
+    border: 1px solid #1e5dbe;
+    border-radius: 50%;
+    background: #fff;
+}
+
+#chromeBar .circle:first-child {
+    background: #1e5dbe;
+}
+
+#chromeBar p {
+    overflow: hidden;
+    margin-left: 8px;
+    color: #174c91;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#webcam-container,
+#computer-container {
+    position: absolute;
+    top: 92px;
+    display: flex;
+    width: 40%;
+    height: 340px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #c8def8;
+    border-radius: 22px;
+    background: #edf5ff;
+    color: #174c91;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+#webcam-container {
+    left: 5%;
+}
+
+#computer-container {
+    right: 5%;
+    color: #1e5dbe;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+#webcam-container::before,
+#computer-container::before {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    left: 50%;
+    padding: 5px 14px;
+    transform: translateX(-50%);
+    border: 1px solid #c8def8;
+    border-radius: 20px;
+    background: #fff;
+    color: #174c91;
+    content: "KAMU";
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+#computer-container::before {
+    content: "KOMPUTER";
+}
+
+#webcam-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+#playerAnswer {
+    position: absolute;
+    z-index: 3;
+    bottom: 14px;
+    padding: 8px 18px;
+    border: 1px solid #c8def8;
+    border-radius: 14px;
+    background: #fff;
+    color: #174c91;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+#vs {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 88px;
+    height: 88px;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 50%;
+    background: #1e5dbe;
+    box-shadow: 0 8px 24px rgba(26, 77, 143, 0.28);
+    color: #fff;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: 600;
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+#vs:hover:not(:disabled) {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: #174c91;
+    box-shadow: 0 12px 30px rgba(26, 77, 143, 0.34);
+}
+
+#vs:active:not(:disabled) {
+    transform: translate(-50%, -50%) scale(0.96);
+}
+
+#vs:focus-visible {
+    outline: 3px solid #1e5dbe;
+    outline-offset: 5px;
+}
+
+#vs:disabled {
+    cursor: wait;
+}
+
+#game-status {
+    position: absolute;
+    right: 24px;
+    bottom: 22px;
+    left: 24px;
+    color: #174c91;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    #windowWrapper {
+        padding: 14px;
+    }
+
+    #containerWindow {
+        min-height: 690px;
+        border-radius: 22px;
+    }
+
+    #chromeBar {
+        height: 56px;
+        padding: 0 16px;
+    }
+
+    #chromeBar p {
+        font-size: 12px;
+    }
+
+    #webcam-container,
+    #computer-container {
+        left: 7%;
+        width: 86%;
+        height: 230px;
+    }
+
+    #webcam-container {
+        top: 76px;
+    }
+
+    #computer-container {
+        top: 368px;
+    }
+
+    #vs {
+        top: 50%;
+        width: 72px;
+        height: 72px;
+        font-size: 26px;
+    }
+
+    #game-status {
+        right: 18px;
+        bottom: 16px;
+        left: 18px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
